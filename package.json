@@ -1,0 +1,48 @@
+{
+  "name": "botkit-chronos",
+  "version": "0.0.0",
+  "description": "A middleware that extracts time information from messages using the chrono library.",
+  "homepage": "alexpsi/botkit-chronos",
+  "author": {
+    "name": "Alex Psi",
+    "email": "alexpsi256@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "botkit",
+    "chrono",
+    "slack",
+    "bot"
+  ],
+  "devDependencies": {
+    "eslint": "^2.1.0",
+    "eslint-config-xo-space": "^0.13.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^2.1.0"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "mocha": true
+    }
+  },
+  "repository": "alexpsi/botkit-chronos",
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chrono-node": "^1.2.3"
+  }
+}
