@@ -1,5 +1,5 @@
-# botkit-chronos [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> A middleware that extracts time information from messages using the chrono library.
+# botkit-chronos [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
+> A middleware that extracts time information from messages using the chrono library. (WORK IN PROGRESS)
 
 ## Installation
 
@@ -10,9 +10,28 @@ $ npm install --save botkit-chronos
 ## Usage
 
 ```js
+var Botkit = require('botkit');
 var botkitChronos = require('botkit-chronos');
+var controller = Botkit.slackbot({
+  debug: false
+});
+botkitChronos.use(controller);
 
-botkitChronos('Rainbow');
+// The controller will listen on all texts starting with 'meeting on' and are followed by a phrase that contains time related
+// content. For example the robot will respond to: 
+//
+// Meeting on Friday
+// Meeting in a month
+// Meeting next monday
+// Meeting on the 6th of June
+//
+// When a time phrase is detected its replaced with TS#timestamp
+
+controller.hears(['meeting on TS(.*)'],'direct_message,direct_mention,mention', function(bot, message) {
+  console.log(new Date(message.text.match(/meeting on TS(.*)/i)[0]));
+});
+
+
 ```
 ## License
 
