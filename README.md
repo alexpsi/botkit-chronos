@@ -20,16 +20,18 @@ botkitChronos.use(controller);
 // The controller will listen on all texts starting with 'meeting on' and are followed by a phrase that contains time related
 // content. For example the robot will respond to: 
 //
-// Meeting on Friday
-// Meeting in a month
-// Meeting next monday
-// Meeting on the 6th of June
+// Deploy next Friday
+// Deploy next month
+// Deploy next monday
+// Deploy 6th of June
 //
 // When a time phrase is detected its replaced with TS#timestamp
 
-controller.hears(['meeting on TS(.*)'],'direct_message,direct_mention,mention', function(bot, message) {
-  console.log(new Date(message.text.match(/meeting on TS(.*)/i)[0]));
+controller.hears(['Deploy TS(.*)'],'direct_message,direct_mention,mention', function(bot, message) {
+  var ts = parseInt(message.text.match(/Deploy TS(.*)/i)[1]);
+  bot.reply(message, 'Ok I will deploy on: ' + new Date(ts));
 });
+
 
 
 ```
